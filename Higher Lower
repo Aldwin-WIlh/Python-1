@@ -1,0 +1,39 @@
+import random
+
+Loop = True
+while Loop:
+  boundaries1: int = int(
+      input(
+          "Choisissez la borne minimum pour le choix du chiffre générer aléatoirement:"
+      ))
+  boundaries2: int = int(input("Choisissez la borne maximum:"))
+  limit: int = abs(
+      int(input("Choisissez le nombre d'essaie pour deviner (0 est infini):")))
+  goal: int = random.randint(boundaries1, boundaries2)
+  guess: int = 0
+  guesses: int = 0
+  solved: bool = False
+
+  while not solved:
+    guesses: int = guesses + 1
+    guess: int = int(input())
+    if guess > goal:
+      print("C'est moins!")
+    if guess < goal:
+      print("C'est plus!")
+    if guess == goal:
+      print(str("Bien joué! Ton score est :"), guesses)
+      solved: bool = True
+      again: str = input(str("Veux tu rejouer? (o/n):"))
+      if again == "n":
+        exit()
+      else:
+        None
+    if guesses == int(limit):
+      print(str("Trop d'essaie, tu perds!"))
+      solved: bool = True
+      again: str = input("Veux tu rejouer? (o/n):")
+      if again == "n":
+        exit()
+      else:
+        None
